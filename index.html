@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zwapwallet redirect Page</title>
+    <script>
+        // Function to detect mobile device
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Function to redirect to the app or a webpage
+        function redirectToAppOrWebpage() {
+            if (isMobile()) {
+                // Redirect to the app's URL
+                window.location.href = "zwapwallet://";
+            } else {
+                // Redirect to a webpage if not on a mobile device
+                window.location.href = "https://www.zwap.hk/zwapwallet/";
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = redirectToAppOrWebpage;
+    </script>
+</head>
+<body>
+    <p>If you are not redirected, <a href="https://www.zwap.hk/zwapwallet/">click here</a>.</p>
+</body>
+</html>
