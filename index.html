@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,11 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             margin-top: 100px;
         }
+
         .download-button {
             background-color: #3498db;
             border: none;
@@ -51,12 +54,32 @@
 
         // Function to redirect to the app or a webpage
         function redirectToAppOrWebpage() {
+
+            var queryParams = window.location.search;
+            var queryParamsObj = {};
+            var pageName ;
+            if (queryParams) {
+                queryParams = queryParams.substring(1);
+                var paramsArray = queryParams.split('&');
+                paramsArray.forEach(function (param) {
+                    var pair = param.split('=');
+                    if(pair[0]=='page'){
+                        pageName = pair[1];
+                    }
+                });
+            }
+          
+
             if (isMobile()) {
                 // Redirect to the app's URL
-                window.location.href = "zwapwallet://upgradePage";
+                if(pageName != null)
+                window.location.href = "zwapwallet://"+ pageName;
+                else
+                window.location.href = "zwapwallet://";
+
             } else {
                 // Redirect to a webpage if not on a mobile device
-                window.location.href = "https://www.zwap.hk/zwapwallet/";
+                 window.location.href = "https://www.zwap.hk/zwapwallet/";
             }
         }
 
@@ -64,10 +87,12 @@
         window.onload = redirectToAppOrWebpage;
     </script>
 </head>
+
 <body>
     <div class="container">
         <h2>Get ZwapWallet App</h2>
         <button class="download-button" onclick="redirectToAppStoreOrPlayStore()">Download Now</button>
     </div>
 </body>
+
 </html>
