@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zwapwallet redirect Page</title>
+    <title>zwapwallet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .download-button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
     <script>
-        // Function to detect mobile device
+        // Function to detect iOS
+        function isiOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        // Function to redirect to the App Store or Play Store
+        function redirectToAppStoreOrPlayStore() {
+            if (isiOS()) {
+                // Redirect to the App Store if on iOS
+                window.location.href = "https://apps.apple.com/mo/app/zwap-wallet-%E5%85%8Dtu%E5%AD%B8%E7%94%9F%E5%BE%AA%E7%92%B0%E8%B2%B8%E6%AC%BE/id6446620025";
+            } else {
+                // Redirect to the Play Store for Android
+                window.location.href = "https://play.google.com/store/apps/details?id=com.zwap.loan&hl=en_AU&gl=US&pli=1";
+            }
+        }
+
         function isMobile() {
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
@@ -26,6 +65,9 @@
     </script>
 </head>
 <body>
-    <p>If you are not  <a href="https://www.zwap.hk/zwapwallet/">click here</a>.</p>
+    <div class="container">
+        <h2>Get ZwapWallet App</h2>
+        <button class="download-button" onclick="redirectToAppStoreOrPlayStore()">Download Now</button>
+    </div>
 </body>
 </html>
